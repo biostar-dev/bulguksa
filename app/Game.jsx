@@ -155,33 +155,34 @@ const PUZZLE_LEVELS = [
 ];
 
 /* ─── Adventure Rooms ─── */
+const WM = f => `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(f)}?width=600`;
 const ADV_ROOMS = [
-  { id:"start", name:"불국사 입구", emoji:"⛩️", desc:"오래된 돌계단 앞에 서 있어요. 안개가 자욱하고 새 소리가 들려요. 멀리 지붕 끝에 금빛이 반짝이고 있어요.", bg:"#1a3322",
+  { id:"start", name:"불국사 입구", emoji:"⛩️", image:WM("Bulguksa-main-gate.jpg"), imageCredit:"Wikimedia Commons", desc:"오래된 돌계단 앞에 서 있어요. 안개가 자욱하고 새 소리가 들려요. 멀리 지붕 끝에 금빛이 반짝이고 있어요.", bg:"#1a3322",
     items:[{id:"map",emoji:"🗺️",name:"고지도",hint:"경내 지도가 그려져 있어요"}],
     exits:[{to:"bridge",label:"돌다리 건너기 🌉",req:null}] },
-  { id:"bridge", name:"청운교·백운교", emoji:"🌉", desc:"33개의 돌계단이 구름 속으로 이어져요. 계단 사이로 고대 문양이 보여요. 수수께끼가 새겨진 돌비석이 있어요!", bg:"#1a2a4a",
+  { id:"bridge", name:"청운교·백운교", emoji:"🌉", image:WM("Blue_and_White_Cloud_Bridges_청운교_백운교_佛國寺_靑雲橋_白雲橋_(5281872665).jpg"), imageCredit:"Wikimedia Commons", desc:"33개의 돌계단이 구름 속으로 이어져요. 계단 사이로 고대 문양이 보여요. 수수께끼가 새겨진 돌비석이 있어요!", bg:"#1a2a4a",
     items:[],
     riddle:{q:"33계단은 무엇을 상징할까요?",opts:["33개의 별","33개의 하늘","33명의 왕","33개의 소원"],ans:1,reward:"golden_key",rewardName:"황금 열쇠 🔑"},
     exits:[{to:"courtyard",label:"자하문으로 🚪",req:"golden_key",locked:"수수께끼를 풀어야 문이 열려요!"},{to:"start",label:"뒤로 돌아가기 ↩️",req:null}] },
-  { id:"courtyard", name:"불국사 마당", emoji:"🏯", desc:"넓은 마당 양쪽에 석가탑과 다보탑이 우뚝 서 있어요! 바닥에 이상한 홈이 파여 있고, 어딘가에서 은은한 종소리가 들려요.", bg:"#2a1a2e",
+  { id:"courtyard", name:"불국사 마당", emoji:"🏯", image:WM("Lotus_Flower_Bridge_and_Seven_Treasure_Bridge_at_Bulguksa_in_Gyeongju,_Korea.jpg"), imageCredit:"Wikimedia Commons", desc:"넓은 마당 양쪽에 석가탑과 다보탑이 우뚝 서 있어요! 바닥에 이상한 홈이 파여 있고, 어딘가에서 은은한 종소리가 들려요.", bg:"#2a1a2e",
     items:[{id:"bell_piece",emoji:"🔔",name:"종 조각",hint:"범종의 일부분 같아요"}],
     exits:[{to:"pagoda",label:"석가탑 살펴보기 🗼",req:null},{to:"cave_entrance",label:"뒷산 오솔길 🌲",req:null},{to:"bridge",label:"돌다리로 ↩️",req:null}] },
-  { id:"pagoda", name:"석가탑 앞", emoji:"🗼", desc:"석가탑 앞에 작은 돌상자가 있어요! 열어볼까요? 탑 꼭대기에서 빛이 반짝입니다.", bg:"#1a2a3a",
+  { id:"pagoda", name:"석가탑 앞", emoji:"🗼", image:WM("Seokgatap_Pagoda.jpg"), imageCredit:"Wikimedia Commons", desc:"석가탑 앞에 작은 돌상자가 있어요! 열어볼까요? 탑 꼭대기에서 빛이 반짝입니다.", bg:"#1a2a3a",
     items:[{id:"sutra",emoji:"📜",name:"무구정광대다라니경",hint:"세계 최초 인쇄물!"}],
     riddle:{q:"석가탑의 별명 '무영탑'은 무슨 뜻일까요?",opts:["그림자가 없는 탑","소리가 없는 탑","이름이 없는 탑","끝이 없는 탑"],ans:0,reward:"light_gem",rewardName:"빛의 보석 💎"},
     exits:[{to:"courtyard",label:"마당으로 ↩️",req:null}] },
-  { id:"cave_entrance", name:"오솔길", emoji:"🌲", desc:"소나무 사이로 산길이 나 있어요. 토끼 한 마리가 길을 안내하는 것 같아요! 멀리 동굴 입구가 보여요.", bg:"#1a3a1a",
+  { id:"cave_entrance", name:"오솔길", emoji:"🌲", image:WM("Korea-Gyeongju-Bulguksa-03.jpg"), imageCredit:"Wikimedia Commons", desc:"소나무 사이로 산길이 나 있어요. 토끼 한 마리가 길을 안내하는 것 같아요! 멀리 동굴 입구가 보여요.", bg:"#1a3a1a",
     items:[{id:"torch",emoji:"🔦",name:"횃불",hint:"어두운 곳을 밝힐 수 있어요"}],
     exits:[{to:"seokguram",label:"석굴암 들어가기 🕳️",req:"torch",locked:"너무 어두워요! 빛이 필요해요."},{to:"courtyard",label:"마당으로 ↩️",req:null}] },
-  { id:"seokguram", name:"석굴암", emoji:"🧘", desc:"거대한 돌부처님이 부드러운 미소를 짓고 있어요. 천장의 돌 돔이 별처럼 반짝이고, 벽면에 아름다운 조각상들이 늘어서 있어요.", bg:"#2a2a3e",
+  { id:"seokguram", name:"석굴암", emoji:"🧘", image:WM("Front_view_of_Buddha_at_Seokguram.jpg"), imageCredit:"Wikimedia Commons", desc:"거대한 돌부처님이 부드러운 미소를 짓고 있어요. 천장의 돌 돔이 별처럼 반짝이고, 벽면에 아름다운 조각상들이 늘어서 있어요.", bg:"#2a2a3e",
     items:[{id:"wisdom",emoji:"✨",name:"지혜의 빛",hint:"부처님이 주신 신비한 빛!"}],
     riddle:{q:"석굴암의 돔은 무엇으로 만들었을까요?",opts:["나무","흙","돌","금속"],ans:2,reward:"dragon_scale",rewardName:"용의 비늘 🐉"},
     exits:[{to:"observatory",label:"산 정상으로 ⛰️",req:null},{to:"cave_entrance",label:"오솔길로 ↩️",req:null}] },
-  { id:"observatory", name:"첨성대 언덕", emoji:"🔭", desc:"첨성대가 보이는 언덕 위에요! 밤하늘에 별이 쏟아지고, 첨성대 꼭대기에서 신비한 빛이 올라와요.", bg:"#0a0a2e",
+  { id:"observatory", name:"첨성대 언덕", emoji:"🔭", image:WM("Cheomseongdae_Observatory_under_blue_sky_in_Gyeongju_South_Korea.jpg"), imageCredit:"Wikimedia Commons", desc:"첨성대가 보이는 언덕 위에요! 밤하늘에 별이 쏟아지고, 첨성대 꼭대기에서 신비한 빛이 올라와요.", bg:"#0a0a2e",
     items:[],
     riddle:{q:"첨성대는 총 몇 개의 돌로 만들어졌을까요?",opts:["100개","200개","362개","500개"],ans:2,reward:"star_crystal",rewardName:"별의 수정 ⭐"},
     exits:[{to:"treasure",label:"보물의 방으로! 🌟",req:"star_crystal",locked:"마지막 수수께끼를 풀어야 해요!"},{to:"seokguram",label:"석굴암으로 ↩️",req:null}] },
-  { id:"treasure", name:"신라의 보물 창고", emoji:"👑", desc:"축하해요! 모든 시련을 통과해서 신라의 비밀 보물 창고를 찾았어요!", bg:"#2a1a0a",
+  { id:"treasure", name:"신라의 보물 창고", emoji:"👑", image:WM("Divine_Bell_of_King_Seongdeok.jpg"), imageCredit:"Wikimedia Commons", desc:"축하해요! 모든 시련을 통과해서 신라의 비밀 보물 창고를 찾았어요!", bg:"#2a1a0a",
     items:[], exits:[], isEnd:true },
 ];
 
@@ -208,9 +209,9 @@ function TempleScene(){return(<svg viewBox="0 0 400 160" style={{width:"100%",ma
 /* ═══════════════════════════════════════
    MAIN MENU
    ═══════════════════════════════════════ */
-function MainMenu({onStart,onGoTo,highScore}){
-  const modes=[{label:"❓ 퀴즈",key:"quiz",c:C.blue,d:"신라 역사 퀴즈"},{label:"🧩 퍼즐",key:"puzzle",c:C.purple,d:"그림 맞추기"},{label:"🏰 어드벤처",key:"adventure",c:C.green,d:"불국사 탐험"}];
-  return(<div style={{...S.wrap,justifyContent:"center",minHeight:"100vh"}}><Stars/><div style={{position:"relative",zIndex:1,width:"100%",maxWidth:500,textAlign:"center"}}><div style={{fontSize:"3.5rem",marginBottom:4}}>🏯</div><h1 style={S.title}>불국사 대모험</h1><p style={{fontSize:"clamp(0.9rem,2.5vw,1.1rem)",color:C.dim,marginBottom:12}}>신라 시대로 떠나는 신비한 여행!</p><TempleScene/><div style={{marginTop:20,display:"flex",flexDirection:"column",gap:12,alignItems:"center"}}><button style={S.btn(C.accent,"1.3rem")} onClick={onStart} onMouseOver={e=>{e.target.style.transform="scale(1.05)"}} onMouseOut={e=>{e.target.style.transform="scale(1)"}}>🚀 모험 시작!</button>{highScore>0&&<div style={{color:C.gold,fontSize:"1rem"}}>🏆 최고 점수: {highScore}점</div>}</div><div style={{marginTop:18,display:"flex",justifyContent:"center",gap:10,flexWrap:"wrap"}}>{modes.map(m=>(<button key={m.key} onClick={()=>onGoTo(m.key)} style={{background:`${m.c}22`,border:`1px solid ${m.c}66`,borderRadius:12,padding:"10px 16px",cursor:"pointer",color:C.text,fontFamily:"'Gaegu',sans-serif",fontSize:"0.95rem",transition:"all 0.2s",textAlign:"center",minWidth:100}} onMouseOver={e=>{e.target.style.background=`${m.c}44`}} onMouseOut={e=>{e.target.style.background=`${m.c}22`}}><div style={{fontSize:"1.1rem",fontWeight:700}}>{m.label}</div><div style={{fontSize:"0.75rem",color:C.dim,marginTop:2}}>{m.d}</div></button>))}</div></div></div>);
+function MainMenu({onStart,onGoTo,highScore,arcadeHigh}){
+  const modes=[{label:"⚡ 아케이드",key:"arcade",c:C.gold,d:"두더지 잡기!"},{label:"❓ 퀴즈",key:"quiz",c:C.blue,d:"신라 역사 퀴즈"},{label:"🧩 퍼즐",key:"puzzle",c:C.purple,d:"그림 맞추기"},{label:"🏰 어드벤처",key:"adventure",c:C.green,d:"불국사 탐험"}];
+  return(<div style={{...S.wrap,justifyContent:"center",minHeight:"100vh"}}><Stars/><div style={{position:"relative",zIndex:1,width:"100%",maxWidth:500,textAlign:"center"}}><div style={{fontSize:"3.5rem",marginBottom:4}}>🏯</div><h1 style={S.title}>불국사 대모험</h1><p style={{fontSize:"clamp(0.9rem,2.5vw,1.1rem)",color:C.dim,marginBottom:12}}>신라 시대로 떠나는 신비한 여행!</p><TempleScene/><div style={{marginTop:20,display:"flex",flexDirection:"column",gap:12,alignItems:"center"}}><button style={S.btn(C.accent,"1.3rem")} onClick={onStart} onMouseOver={e=>{e.target.style.transform="scale(1.05)"}} onMouseOut={e=>{e.target.style.transform="scale(1)"}}>🚀 모험 시작!</button><div style={{display:"flex",gap:14,flexWrap:"wrap",justifyContent:"center"}}>{highScore>0&&<div style={{color:C.gold,fontSize:"0.95rem"}}>🏆 모험: {highScore}점</div>}{arcadeHigh>0&&<div style={{color:C.gold,fontSize:"0.95rem"}}>⚡ 아케이드: {arcadeHigh}점</div>}</div></div><div style={{marginTop:18,display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:10,maxWidth:340,margin:"18px auto 0"}}>{modes.map(m=>(<button key={m.key} onClick={()=>onGoTo(m.key)} style={{background:`${m.c}22`,border:`1px solid ${m.c}66`,borderRadius:12,padding:"10px 12px",cursor:"pointer",color:C.text,fontFamily:"'Gaegu',sans-serif",fontSize:"0.95rem",transition:"all 0.2s",textAlign:"center"}} onMouseOver={e=>{e.target.style.background=`${m.c}44`}} onMouseOut={e=>{e.target.style.background=`${m.c}22`}}><div style={{fontSize:"1.05rem",fontWeight:700}}>{m.label}</div><div style={{fontSize:"0.75rem",color:C.dim,marginTop:2}}>{m.d}</div></button>))}</div></div></div>);
 }
 
 /* ═══════════════════════════════════════
@@ -385,7 +386,7 @@ function AdventureGame({onComplete,score,setScore,onHome}){
       <Bar score={score} stage={`탐험: ${room.name}`} onHome={onHome}/>
       {inv.length>0&&<div style={{display:"flex",gap:5,flexWrap:"wrap",marginBottom:8,padding:"5px 8px",background:"rgba(0,0,0,0.2)",borderRadius:8}}><span style={{fontSize:"0.75rem",color:C.dim,marginRight:3}}>🎒</span>{inv.map((it,i)=><span key={i} style={{fontSize:"0.8rem"}} title={it.name}>{it.emoji||"📦"}</span>)}</div>}
       <div style={{...S.card,background:`linear-gradient(180deg,${room.bg},${C.card})`}}>
-        <div style={{textAlign:"center",marginBottom:10}}><div style={{fontSize:"2.2rem",marginBottom:2}}>{room.emoji}</div><h2 style={{fontSize:"1.2rem",color:C.gold,margin:"2px 0"}}>{room.name}</h2></div>
+        <div style={{textAlign:"center",marginBottom:10}}>{room.image?<div style={{position:"relative",width:"100%",maxWidth:320,margin:"0 auto 6px",borderRadius:12,overflow:"hidden",aspectRatio:"4/3",background:"rgba(255,255,255,0.05)"}}><img src={room.image} alt={room.name} loading="lazy" style={{width:"100%",height:"100%",objectFit:"cover",display:"block"}}/><div style={{position:"absolute",top:6,left:6,fontSize:"1.4rem",filter:"drop-shadow(0 1px 2px rgba(0,0,0,0.7))"}}>{room.emoji}</div>{room.imageCredit&&<div style={{position:"absolute",bottom:2,right:6,fontSize:"0.6rem",color:"rgba(255,255,255,0.7)",textShadow:"0 1px 2px rgba(0,0,0,0.9)"}}>© {room.imageCredit}</div>}</div>:<div style={{fontSize:"2.2rem",marginBottom:2}}>{room.emoji}</div>}<h2 style={{fontSize:"1.2rem",color:C.gold,margin:"2px 0"}}>{room.name}</h2></div>
         <RoomScene roomId={roomId}/>
         <p style={{fontSize:"1rem",lineHeight:1.7,color:C.text,marginBottom:12,padding:"0 4px"}}>{room.desc}</p>
         {msg&&<div style={{background:"rgba(245,200,66,0.15)",border:`1px solid ${C.gold}55`,borderRadius:10,padding:"8px 12px",marginBottom:10,textAlign:"center",fontSize:"0.9rem",color:C.gold}}>{msg}</div>}
@@ -394,11 +395,144 @@ function AdventureGame({onComplete,score,setScore,onHome}){
         {room.riddle&&riddleState===null&&<div style={{marginBottom:12}}><button onClick={()=>setRiddleState("showing")} style={{...S.btn("rgba(155,89,182,0.6)","0.9rem"),width:"100%"}}>🧩 수수께끼에 도전!</button></div>}
         {riddleState==="showing"&&room.riddle&&<div style={{background:"rgba(155,89,182,0.1)",border:`1px solid ${C.purple}44`,borderRadius:12,padding:12,marginBottom:12}}><div style={{fontSize:"0.95rem",fontWeight:700,marginBottom:8}}>🧩 {room.riddle.q}</div><div style={{display:"flex",flexDirection:"column",gap:6}}>{room.riddle.opts.map((o,i)=><button key={i} onClick={()=>ansRiddle(i)} style={{background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:10,padding:"8px 10px",color:C.text,fontSize:"0.9rem",cursor:"pointer",fontFamily:"'Gaegu',sans-serif",textAlign:"left"}}>{["①","②","③","④"][i]} {o}</button>)}</div></div>}
         {riddleState==="correct"&&<div style={{background:"rgba(46,204,113,0.12)",border:`1px solid ${C.green}44`,borderRadius:12,padding:12,marginBottom:12,textAlign:"center"}}><div style={{fontSize:"1.1rem",fontWeight:700,color:C.green}}>🎉 정답! +20점</div><div style={{fontSize:"0.9rem",color:C.text,marginTop:4}}>{room.riddle.rewardName}을(를) 얻었어요!</div></div>}
-        {riddleState==="wrong"&&<div style={{background:"rgba(233,69,96,0.12)",border:`1px solid ${C.accent}44`,borderRadius:12,padding:12,marginBottom:12}}><div style={{fontSize:"0.95rem",color:C.accent,fontWeight:700}}>😅 아쉬워요!</div><div style={{fontSize:"0.85rem",color:C.dim,marginTop:2}}>정답: {room.riddle.opts[room.riddle.ans]}</div><button onClick={()=>{setRiddleState("correct");setInv(inv=>[...inv,{id:room.riddle.reward,emoji:room.riddle.rewardName.slice(-2),name:room.riddle.rewardName}]);setScore(s=>s+5)}} style={{...S.btn(C.purple,"0.8rem"),marginTop:6}}>보상 받기 (+5점)</button></div>}
+        {riddleState==="wrong"&&<div style={{background:"rgba(233,69,96,0.12)",border:`1px solid ${C.accent}44`,borderRadius:12,padding:12,marginBottom:12}}><div style={{fontSize:"0.95rem",color:C.accent,fontWeight:700}}>😅 아쉬워요!</div><div style={{fontSize:"0.85rem",color:C.dim,marginTop:2}}>다시 잘 생각해보고 도전해 보세요!</div><button onClick={()=>{setRiddleState("showing");setRiddleSel(null)}} style={{...S.btn(C.purple,"0.8rem"),marginTop:6}}>🔄 다시 풀어보기</button></div>}
 
         {room.exits.length>0&&<div style={{display:"flex",flexDirection:"column",gap:6,marginTop:4}}>{room.exits.map((ex,i)=><button key={i} onClick={()=>tryExit(ex)} style={{background:"rgba(52,152,219,0.12)",border:`1px solid ${C.blue}55`,borderRadius:12,padding:"10px 14px",color:C.text,fontSize:"0.95rem",cursor:"pointer",fontFamily:"'Gaegu',sans-serif",textAlign:"left",transition:"all 0.2s",display:"flex",alignItems:"center",justifyContent:"space-between"}} onMouseOver={e=>{e.target.style.background="rgba(52,152,219,0.25)"}} onMouseOut={e=>{e.target.style.background="rgba(52,152,219,0.12)"}}><span>{ex.label}</span>{ex.req&&!inv.some(it=>it.id===ex.req)&&<span style={{fontSize:"0.8rem"}}>🔒</span>}</button>)}</div>}
       </div>
       <div style={{display:"flex",gap:4,justifyContent:"center",flexWrap:"wrap",marginTop:2}}>{ADV_ROOMS.filter(r=>!r.isEnd).map(r=><div key={r.id} style={{width:9,height:9,borderRadius:"50%",background:r.id===roomId?C.gold:visited.includes(r.id)?C.green:"rgba(255,255,255,0.15)",transition:"all 0.3s"}} title={r.name}/>)}</div>
+    </div></div>
+  );
+}
+
+/* ═══════════════════════════════════════
+   ARCADE (Silla Whack-a-Mole)
+   ═══════════════════════════════════════ */
+const ARCADE_CHARS = [
+  {e:"🐰",pts:10,w:32,t:1400,n:"토끼"},
+  {e:"🦊",pts:20,w:16,t:1200,n:"여우"},
+  {e:"🐉",pts:30,w:8,t:1000,n:"용",rare:true},
+  {e:"💎",pts:50,w:4,t:850,n:"보물",rare:true},
+  {e:"💣",pts:-15,w:22,t:1500,n:"폭탄",bad:true},
+  {e:"🐛",pts:-5,w:18,t:1600,n:"벌레",bad:true},
+];
+const ARCADE_WSUM = ARCADE_CHARS.reduce((a,c)=>a+c.w,0);
+const ARCADE_ROUND_MS = 60000;
+const ARCADE_HOLES = 9;
+
+function ArcadeGame({onHome,arcadeHigh,setArcadeHigh}){
+  const [phase,setPhase]=useState("ready");
+  const [score,setScore]=useState(0);
+  const [remain,setRemain]=useState(ARCADE_ROUND_MS);
+  const [holes,setHoles]=useState(Array(ARCADE_HOLES).fill(null));
+  const [floats,setFloats]=useState([]);
+  const [combo,setCombo]=useState(0);
+  const [flash,setFlash]=useState(null);
+  const startRef=useRef(0);
+  const comboRef=useRef(0);
+
+  const start=()=>{setScore(0);setCombo(0);comboRef.current=0;setRemain(ARCADE_ROUND_MS);setHoles(Array(ARCADE_HOLES).fill(null));setFloats([]);setFlash(null);startRef.current=Date.now();setPhase("play")};
+
+  useEffect(()=>{
+    if(phase!=="play")return;
+    const loop=setInterval(()=>{
+      const now=Date.now();
+      const elapsed=now-startRef.current;
+      const rem=Math.max(0,ARCADE_ROUND_MS-elapsed);
+      setRemain(rem);
+      if(rem===0){clearInterval(loop);setPhase("over");return}
+      const diff=elapsed/ARCADE_ROUND_MS;
+      setHoles(hs=>{
+        const out=hs.map(h=>(h&&h.exp<now)?null:h);
+        const spawnP=0.16+diff*0.28;
+        const empty=[];for(let i=0;i<out.length;i++)if(!out[i])empty.push(i);
+        if(empty.length>0&&Math.random()<spawnP){
+          const slot=empty[Math.floor(Math.random()*empty.length)];
+          let r=Math.random()*ARCADE_WSUM,pick=ARCADE_CHARS[0];
+          for(const c of ARCADE_CHARS){r-=c.w;if(r<=0){pick=c;break}}
+          const lifetime=Math.max(650,pick.t-diff*450);
+          out[slot]={...pick,exp:now+lifetime,id:now+slot+Math.random()};
+        }
+        return out;
+      });
+    },80);
+    return ()=>clearInterval(loop);
+  },[phase]);
+
+  useEffect(()=>{if(phase==="over")setArcadeHigh(h=>Math.max(h,score))},[phase,score,setArcadeHigh]);
+
+  const tap=idx=>{
+    if(phase!=="play")return;
+    const h=holes[idx];if(!h)return;
+    setHoles(hs=>{const o=[...hs];o[idx]=null;return o});
+    let gain=h.pts;
+    if(!h.bad){comboRef.current+=1;if(comboRef.current>=3)gain=Math.round(gain*1.5);setCombo(comboRef.current)}
+    else{comboRef.current=0;setCombo(0);setFlash("bad");setTimeout(()=>setFlash(null),250)}
+    setScore(s=>Math.max(0,s+gain));
+    const fid=Math.random();
+    setFloats(f=>[...f,{id:fid,idx,pts:gain,bad:h.bad,rare:h.rare}]);
+    setTimeout(()=>setFloats(f=>f.filter(x=>x.id!==fid)),700);
+  };
+
+  const pct=(remain/ARCADE_ROUND_MS)*100;
+  const timeColor=remain<10000?C.accent:remain<20000?C.gold:C.green;
+
+  if(phase==="ready")return(
+    <div style={S.wrap}><Stars/><div style={{position:"relative",zIndex:1,width:"100%",maxWidth:500}}>
+      <Bar score={0} stage="아케이드" onHome={onHome}/>
+      <div style={S.card}>
+        <div style={{textAlign:"center",marginBottom:12}}>
+          <div style={{fontSize:"3.2rem"}}>⚡</div>
+          <h2 style={{fontSize:"1.5rem",color:C.gold,margin:"4px 0"}}>신라 두더지 잡기!</h2>
+          <p style={{color:C.dim,fontSize:"0.9rem",marginTop:4}}>60초 안에 점수를 모아요!<br/>3번 연속 맞히면 <span style={{color:C.gold}}>1.5배 콤보!</span></p>
+        </div>
+        <div style={{background:"rgba(0,0,0,0.25)",borderRadius:12,padding:12,marginBottom:12}}>
+          <div style={{fontSize:"0.85rem",color:C.green,fontWeight:700,marginBottom:6}}>✅ 잡아요!</div>
+          {ARCADE_CHARS.filter(c=>!c.bad).map(c=>(<div key={c.e} style={{display:"flex",alignItems:"center",gap:10,fontSize:"0.95rem",padding:"3px 0"}}><span style={{fontSize:"1.6rem"}}>{c.e}</span><span>{c.n}{c.rare&&" ✨"}</span><span style={{marginLeft:"auto",color:C.green,fontWeight:700}}>+{c.pts}점</span></div>))}
+          <div style={{fontSize:"0.85rem",color:C.accent,fontWeight:700,margin:"10px 0 6px"}}>❌ 피해요!</div>
+          {ARCADE_CHARS.filter(c=>c.bad).map(c=>(<div key={c.e} style={{display:"flex",alignItems:"center",gap:10,fontSize:"0.95rem",padding:"3px 0"}}><span style={{fontSize:"1.6rem"}}>{c.e}</span><span>{c.n}</span><span style={{marginLeft:"auto",color:C.accent,fontWeight:700}}>{c.pts}점</span></div>))}
+        </div>
+        {arcadeHigh>0&&<div style={{textAlign:"center",color:C.gold,fontSize:"0.95rem",marginBottom:12}}>🏆 최고 기록: {arcadeHigh}점</div>}
+        <button onClick={start} style={{...S.btn(C.accent,"1.25rem"),width:"100%"}}>🎮 시작!</button>
+      </div>
+    </div></div>
+  );
+
+  if(phase==="over"){
+    const isNew=score>=arcadeHigh&&score>0;
+    return(
+      <div style={S.wrap}><Stars/><div style={{position:"relative",zIndex:1,width:"100%",maxWidth:500,textAlign:"center"}}>
+        <Bar score={score} stage="끝!" onHome={onHome}/>
+        <div style={S.card}>
+          <div style={{fontSize:"3.5rem"}}>{isNew?"🏆":"⏱️"}</div>
+          <h2 style={{fontSize:"1.5rem",color:C.gold,margin:"4px 0"}}>{isNew?"신기록!":"게임 끝!"}</h2>
+          <div style={{fontSize:"2.8rem",color:C.gold,fontWeight:900,margin:"10px 0"}}>{score}점</div>
+          {arcadeHigh>0&&!isNew&&<p style={{color:C.dim,fontSize:"0.9rem"}}>🏆 최고 기록: {arcadeHigh}점</p>}
+          <div style={{display:"flex",gap:8,marginTop:18}}>
+            <button onClick={start} style={{...S.btn(C.accent),flex:1}}>🔄 다시!</button>
+            <button onClick={onHome} style={{...S.btn(C.blue),flex:1}}>🏠 홈</button>
+          </div>
+        </div>
+      </div></div>
+    );
+  }
+
+  return(
+    <div style={{...S.wrap,animation:flash==="bad"?"shake 0.25s":"none"}}><Stars/><div style={{position:"relative",zIndex:1,width:"100%",maxWidth:500}}>
+      <Bar score={score} stage={`⏱️ ${Math.ceil(remain/1000)}초`} onHome={onHome}/>
+      <div style={{background:"rgba(255,255,255,0.1)",borderRadius:8,height:10,overflow:"hidden",marginBottom:10,position:"relative"}}>
+        <div style={{width:`${pct}%`,height:"100%",background:timeColor,borderRadius:8,transition:"width 0.1s linear,background 0.3s"}}/>
+      </div>
+      {combo>=3&&<div style={{textAlign:"center",color:C.gold,fontSize:"1rem",fontWeight:700,marginBottom:6}}>🔥 {combo} 콤보! x1.5</div>}
+      <div style={{...S.card,padding:16,background:flash==="bad"?"rgba(233,69,96,0.15)":C.card,transition:"background 0.2s"}}>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:10,maxWidth:360,margin:"0 auto"}}>
+          {holes.map((h,i)=>(
+            <div key={i} onClick={()=>tap(i)} style={{position:"relative",aspectRatio:"1",background:"radial-gradient(circle at 50% 35%,#6b4a2a,#3a2414 65%,#1a0a00)",borderRadius:"50%",cursor:"pointer",overflow:"hidden",boxShadow:"inset 0 8px 14px rgba(0,0,0,0.6),0 2px 4px rgba(0,0,0,0.3)",border:"2px solid rgba(0,0,0,0.35)",userSelect:"none",WebkitUserSelect:"none",touchAction:"manipulation"}}>
+              {h&&<div key={h.id} style={{position:"absolute",inset:0,display:"flex",alignItems:"center",justifyContent:"center",fontSize:"clamp(2rem,9vw,3rem)",animation:"popIn 0.2s ease-out",filter:h.rare?"drop-shadow(0 0 6px #f5c842)":"none"}}>{h.e}</div>}
+              {floats.filter(f=>f.idx===i).map(f=>(<div key={f.id} style={{position:"absolute",top:"50%",left:"50%",fontSize:"1.3rem",fontWeight:900,color:f.bad?C.accent:f.rare?C.gold:C.green,pointerEvents:"none",animation:"floatUp 0.7s ease-out forwards",textShadow:"0 2px 4px rgba(0,0,0,0.9)",zIndex:2}}>{f.pts>0?`+${f.pts}`:f.pts}</div>))}
+            </div>
+          ))}
+        </div>
+      </div>
     </div></div>
   );
 }
@@ -437,6 +571,18 @@ export default function App(){
   const [screen,setScreen]=useState("menu");
   const [score,setScore]=useState(0);
   const [highScore,setHighScore]=useState(0);
+  const [arcadeHigh,setArcadeHigh]=useState(0);
+
+  useEffect(()=>{
+    try{
+      const h=parseInt(localStorage.getItem("bulguksa_high")||"0",10);
+      const a=parseInt(localStorage.getItem("bulguksa_arcade_high")||"0",10);
+      if(h)setHighScore(h);
+      if(a)setArcadeHigh(a);
+    }catch{}
+  },[]);
+  useEffect(()=>{try{localStorage.setItem("bulguksa_high",String(highScore))}catch{}},[highScore]);
+  useEffect(()=>{try{localStorage.setItem("bulguksa_arcade_high",String(arcadeHigh))}catch{}},[arcadeHigh]);
 
   const start=()=>{setScore(0);setScreen("quiz")};
   const goTo=s=>{setScore(0);setScreen(s)};
@@ -445,14 +591,13 @@ export default function App(){
   const afterPuzzle=()=>setScreen("adventure");
   const afterAdv=()=>{setHighScore(h=>Math.max(h,score));setScreen("result")};
 
-  useEffect(()=>{const el=document.createElement("style");el.textContent=`@import url('${FONT_URL}');@keyframes twinkle{from{opacity:0.3}to{opacity:1}}@keyframes floatUp{from{opacity:1;transform:translate(-50%,-50%)}to{opacity:0;transform:translate(-50%,-120%)}}*{-webkit-tap-highlight-color:transparent}body{margin:0;padding:0;overflow-x:hidden}`;document.head.appendChild(el);return()=>document.head.removeChild(el)},[]);
-
   switch(screen){
-    case "menu":return<MainMenu onStart={start} onGoTo={goTo} highScore={highScore}/>;
+    case "menu":return<MainMenu onStart={start} onGoTo={goTo} highScore={highScore} arcadeHigh={arcadeHigh}/>;
     case "quiz":return<QuizGame onComplete={afterQuiz} score={score} setScore={setScore} onHome={goHome}/>;
     case "puzzle":return<PuzzleGame onComplete={afterPuzzle} score={score} setScore={setScore} onHome={goHome}/>;
     case "adventure":return<AdventureGame onComplete={afterAdv} score={score} setScore={setScore} onHome={goHome}/>;
+    case "arcade":return<ArcadeGame onHome={goHome} arcadeHigh={arcadeHigh} setArcadeHigh={setArcadeHigh}/>;
     case "result":return<ResultScreen score={score} onRestart={goHome}/>;
-    default:return<MainMenu onStart={start} onGoTo={goTo} highScore={highScore}/>;
+    default:return<MainMenu onStart={start} onGoTo={goTo} highScore={highScore} arcadeHigh={arcadeHigh}/>;
   }
 }

@@ -17,6 +17,8 @@ export default function RootLayout({ children }) {
           body { margin: 0; padding: 0; overflow-x: hidden; }
           @keyframes twinkle { from { opacity: 0.3; } to { opacity: 1; } }
           @keyframes floatUp { from { opacity: 1; transform: translate(-50%, -50%); } to { opacity: 0; transform: translate(-50%, -120%); } }
+          @keyframes popIn { from { transform: scale(0.3); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+          @keyframes shake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
         `}</style>
       </head>
       <body>{children}</body>
